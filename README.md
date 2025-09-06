@@ -25,11 +25,12 @@ The code is written in **C++** with the [deal.II](https://www.dealii.org/) finit
 
 ## Compilation
 Requirements: **CMake** and **deal.II**.
+Download the meshes folder from: https://drive.google.com/drive/folders/1b53ZrOJ64bX6KrA3baiffa9-QB8Bxg3C?usp=share_link
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/nmpde-projects.git
-cd nmpde-projects/coupled-darcy-stokes
+git clone https://github.com/FrancescoEgidioFaggion/nmpde-projects-Faggion-Silvestri
+cd nmpde-projects-Faggion-Silvestri
 
 # Create build directory
 mkdir build && cd build
@@ -60,16 +61,13 @@ Polynomial degrees and solver settings can be modified in `src/main.cpp`.
 
 ## Tests
 Two sample tests are implemented:
-1. **Manufactured solution (sin/cos forcing terms)** → checks convergence.  
-2. **Inflow/Outflow setup** → tests coupling between Stokes and Darcy regions.
+**Manufactured solution with trigonomotric functions and with polynomial functions.
+
+
 
 ---
 
 ## Author
-Francesco Faggion (Politecnico di Milano)
+Francesco Egidio Faggion
+Martina Silvestri
 
----
-
-## Delivery Notes
-- Code delivery via pull request to the original repository.  
-- Report sent by email to *michele.bucelli@polimi.it*.  
