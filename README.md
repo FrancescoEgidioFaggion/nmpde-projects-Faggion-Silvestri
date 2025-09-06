@@ -1,23 +1,75 @@
-### Organizing the source code
-Please place all your sources into the `src` folder.
+# Darcy–Stokes Coupled Solver
 
-Binary files must not be uploaded to the repository (including executables).
+## Description
+This project implements a solver for the coupled **Darcy–Stokes problem** on a 2D domain.  
+The domain is split into two subdomains:
+- **Left**: Stokes equations  
+- **Right**: Darcy equations  
 
-Mesh files should not be uploaded to the repository. If applicable, upload `gmsh` scripts with suitable instructions to generate the meshes (and ideally a Makefile that runs those instructions). If not applicable, consider uploading the meshes to a different file sharing service, and providing a download link as part of the building and running instructions.
+The coupling is enforced iteratively on the interface using a residual-based fixed-point algorithm.  
+The code is written in **C++** with the [deal.II](https://www.dealii.org/) finite element library.
 
-### Compiling
-To build the executable, make sure you have loaded the needed modules with
-```bash
-$ module load gcc-glibc dealii
+---
+
+## Repository Structure
 ```
-Then run the following commands:
-```bash
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
+├── src/                # Source code
+│   ├── main.cpp        # Entry point
+│   ├── Darcy.hpp/.cpp  # Darcy solver
+│   ├── Stokes.hpp/.cpp # Stokes solver
+├── CMakeLists.txt      # Build configuration
+└── README.md           # This file
 ```
-The executable will be created into `build`, and can be executed through
+
+---
+
+## Compilation
+Requirements: **CMake** and **deal.II**.
+
 ```bash
-$ ./executable-name
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/nmpde-projects.git
+cd nmpde-projects/coupled-darcy-stokes
+
+# Create build directory
+mkdir build && cd build
+
+# Run CMake
+cmake ..
+
+# Compile
+make
 ```
+
+The executable will be available in:
+```
+build/coupled_executable
+```
+
+---
+
+## Run
+Execute the program with:
+```bash
+./coupled_executable
+```
+
+Polynomial degrees and solver settings can be modified in `src/main.cpp`.
+
+---
+
+## Tests
+Two sample tests are implemented:
+1. **Manufactured solution (sin/cos forcing terms)** → checks convergence.  
+2. **Inflow/Outflow setup** → tests coupling between Stokes and Darcy regions.
+
+---
+
+## Author
+Francesco Faggion (Politecnico di Milano)
+
+---
+
+## Delivery Notes
+- Code delivery via pull request to the original repository.  
+- Report sent by email to *michele.bucelli@polimi.it*.  

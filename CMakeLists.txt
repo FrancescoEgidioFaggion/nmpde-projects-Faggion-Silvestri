@@ -1,7 +1,15 @@
 cmake_minimum_required(VERSION 3.12.0)
-project(project_title LANGUAGES CXX C)
+
+project(serial LANGUAGES CXX)
 
 include(../common/cmake-common.cmake)
 
-add_executable(lab-01 src/lab-01.cpp src/Poisson1D.cpp)
-deal_ii_setup_target(lab-01)
+add_executable(coupled_executable
+    src/main.cpp
+    src/Stokes.cpp
+    src/Darcy.cpp
+)
+
+deal_ii_setup_target(coupled_executable)
+
+target_include_directories(coupled_executable PRIVATE ${PROJECT_SOURCE_DIR}/src)
